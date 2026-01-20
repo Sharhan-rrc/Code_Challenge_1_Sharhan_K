@@ -39,3 +39,11 @@ const players: Player[] = [
     totalScore: 0
   }
 ];
+
+/**
+ * Gets all players from the data store
+ * @returns Array of all Player objects
+ */
+export function getAllPlayers(): Player[] {
+  return players;
+}
