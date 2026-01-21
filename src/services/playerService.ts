@@ -56,3 +56,18 @@ export function getAllPlayers(): Player[] {
 export function getPlayerById(id: number): Player | undefined {
   return players.find(player => player.id === id);
 }
+
+/**
+ * Calculates a player's performance rating based on their stats
+ * Formula: rating = (wins / totalGames) * 100 + (totalScore / totalGames)
+ * @param player - The Player object to calculate rating for
+ * @returns The calculated rating rounded to 2 decimal places
+ */
+export function calculateRating(player: Player): number {
+  // Calculate total games played
+  const totalGames = player.wins + player.losses;
+  
+  // Edge case: if player has no games, rating is 0
+  if (totalGames === 0) {
+    return 0;
+  }
