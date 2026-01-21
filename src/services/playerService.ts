@@ -47,3 +47,12 @@ const players: Player[] = [
 export function getAllPlayers(): Player[] {
   return players;
 }
+
+/**
+ * Finds a single player by their ID
+ * @param id - The player's unique identifier
+ * @returns The Player object if found, otherwise undefined
+ */
+export function getPlayerById(id: number): Player | undefined {
+  return players.find(player => player.id === id);
+}
