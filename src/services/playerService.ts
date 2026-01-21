@@ -71,3 +71,16 @@ export function calculateRating(player: Player): number {
   if (totalGames === 0) {
     return 0;
   }
+
+  // Calculate win rate percentage (0-100)
+  const winRate = (player.wins / totalGames) * 100;
+  
+  // Calculate average score per game
+  const averageScore = player.totalScore / totalGames;
+  
+  // Combine win rate and average score for final rating
+  const rating = winRate + averageScore;
+  
+  // Round to 2 decimal places
+  return Math.round(rating * 100) / 100;
+}
