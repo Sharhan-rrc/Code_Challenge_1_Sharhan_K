@@ -84,3 +84,32 @@ export function calculateRating(player: Player): number {
   // Round to 2 decimal places
   return Math.round(rating * 100) / 100;
 }
+
+/**
+ * Gets a player's rating information including ID, name, rating, and games played
+ * @param id - The player's unique identifier
+ * @returns RatingResponse object or undefined if player not found
+ */
+export function getPlayerRating(id: number): RatingResponse | undefined {
+  // First, find the player
+  const player = getPlayerById(id);
+  
+  // If player doesn't exist, return undefined
+  if (!player) {
+    return undefined;
+  }
+  
+  // Calculate the rating
+  const rating = calculateRating(player);
+  
+  // Calculate games played
+  const gamesPlayed = player.wins + player.losses;
+  
+  // Return the formatted response
+  return {
+    id: player.id,
+    name: player.name,
+    rating: rating,
+    gamesPlayed: gamesPlayed
+  };
+}
